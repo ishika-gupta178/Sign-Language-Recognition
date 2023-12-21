@@ -1,6 +1,6 @@
 # Sign-Language-Recognition
 
-## Steps to run the just the sign language recognition part:
+## Steps to just run the sign language recognition part:
 
 1. Install Python 3.11.4
 2. Run the following commands:
