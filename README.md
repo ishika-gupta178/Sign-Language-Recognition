@@ -14,7 +14,7 @@
 5. Go to the location where 'app.py' is stored
 6. Run the following command: python app.py
 
-## Steps to run the just the sign language recognition part:
+## Steps to run the just the sign language recognition website:
 
 1. Install Python 3.11.4
 2. Run the following commands:
