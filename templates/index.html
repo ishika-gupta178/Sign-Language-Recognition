@@ -1,0 +1,1295 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign language recognition</title>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=Kvcg7htodu3Y_KTAI_yVqq8-S1vghLLN9YrKP8X97Rm5Y27kKP9db4J3z5vq1O7ekEYQfOI_sNFFAEdxiSnxJsE5U4rkUrH9a0Jx0p0kgv6c58VMujnlQjkQ6DmqP0KrEtL75Yg0LoPrd1Q4F7QWZps6sgv9zt1339R9qTmzjeUQwGlvvVX92OJ7eGJkmjJKxZ5JrWvZ26OiyYSASWkxbOUl2dGHzVKq2jbJEyNycwkqgi2TwjyeaRX3_3dew0H0FTkjOnU6BO32vmdT2B_owwGtK8UV_st--JluiZ7Dg2zhLNAbF6K6NHN8caAT4tK2HCR7kmyhmEpjC-CQJIn-LqWf1_zY21n09F8dRXGicc0oFKpytvQn0UpfGaZ07h6_EcxPY1AIXt0vdo8hnpxk2GH0JFPrrpJ8gmGQ_f_xmewhFYxDkLOyUADfcdPFnXHPdTZ5cLbGiGs5hBt-oQoheZmJo_3vmZTjJqhCO5GjcOYUWQah0rUJaCvrq7IcZzgf2M3xojE4WSLQU9whAVF-2aA8JCIFRdcvu3SPqC5lLqTi8eQgKC2ioI1-xSfo38w6KGbPcTfJFZkBfQy8aEuS0t3hGarlOBNcGpz_x_7WujAx19BisS_hVLlPI_lSnLPN1ibt3JxcPCs4h2j8SBQ0zllomh5Wd-P_e6NxAO6gsn1n4WTdBvNfs5O6ddQZfAb7g2wGYmiQTPRqqojIvTTjyjLHq6OpgtvrDqneLsISd_wZvXxl-b7nPOv_JCEMzvSnDxavsNka0rlSc7S7QghytzekNCch_SR6kwehwIsRpvfT3F153pG36tx_EpBMNCOjo6tUtfroJbqtTcQX9wiG1o0Y6jQdRCuYn4D0OcHnBnj8UmBu4Nf1ivFWtQP-EGvL2G2mFkIl8DXUwDMSJ-qzR_r0_OKeMHD_2xNzKCnFvGY1I_aYIisb04ZFrsHDmHEqJV8azqzWzmjz1vz1idhj6ZpwXl9cA9sphal4wX3SLh0HRT-KUyz2McvovXwmkW5B3FZ_GNOlC5INBZ9SQvyoWY4iuZ61Ho7VqT8uTYocwE_51QOSlPAvjqASw4fZaNOUvadKZ4nVNQP-0LMl3WKN6XGhw6FCWc7gWOMO5PRwkxPjKdAER6f8Aq9f8KdVjiyXSfBFKegwM8z9xkmkLfhXN7yokXJiODso198txRmXO1HWkQd96mvBTNTlzzmo-tPFpZgxGtgRhAlueAW23LAoGYzlERFKrwsvRJYpPcdgSLeNhSBz5LY-ILRhnkcxPteawLa72IIB3CemkvCTrWsVueJZdsOlfjJN3X2V7qYlwXXCUh_pyK2TmwQ-jyHTckq8KTPCnBpZW4P8uITXoIe0x75UCFMiQAR8i_RBgYl9xHULrL9gADIRBLByJau8zgcVnvfbcgJ1t1cxCn_8NREdxPg61yn7AvQYqj93KKErCGMO-x4q7NcI4W8rU85srYUkQF2S5M5zBnOdO9tasQA--HFxKr2YSMScMaS_FsnBnDFm-KoX3BpaThvc5DtzaAbbkG0G_okIqIMOAMK2xmirCIGnHuCZkav0h5xbsBiCIrp_6K2FCV0dvgiBef4AGTmMeBb3gPadmVntOXM70FRHkA" nonce="0072f1c5f408390788f01b8c61621365" charset="UTF-8"></script><link rel="stylesheet" crossorigin="anonymous" href="https://gc.kis.v2.scr.kaspersky-labs.com/E3E8934C-235A-4B0E-825A-35A08381A191/abn/main.css?attr=aHR0cHM6Ly9tYWlsLWF0dGFjaG1lbnQuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2F0dGFjaG1lbnQvdS8wLz91aT0yJmlrPTA3M2ViNWIzOGQmYXR0aWQ9MC4xJnBlcm1tc2dpZD1tc2ctZjoxNzU1MjQ2MTA3NjAxNTI4Njc5JnRoPTE4NWJlMzA5MDBmOWU3Njcmdmlldz1hdHQmZGlzcD1zYWZlJnJlYWxhdHRpZD1mX2xjenNpejhpMCZzYWRkYmF0PUFOR2pkSl9uM05rQnpER2l5WkE2a0tEaVdra0N5QkM2WE1DZVk2QnNQZTRJTDE3NExqVEJhN2VfWWhBcG9XNWpJWDhQN1I5MzdJdDRpUTFyWEhHeDk4dm12OHE0aXg4dEtsMThRRzYzWllaOHJpUXhsSnNQMzk0YVZqNEVLLTNYMDFqS1J3SFg4cmpyN1hXNzBmZjZUY1pDYzg2X1VyU2JvcnpqNmxYaW9MMG9JYm5QXzVLMjNKZXBMSTVvQ2NWc29NZDZSbU9GY1dFT3hsZF93dzZmeGZkNlA0ckNfUmlFdWd1TVFFcFdWNWxYSTdZN1VqMHpsVXMyV2R2OUFYQ2Vuak1KdDZ1dS03NUY4dXFtRjhoNGxrWjBLQlM2NDRkR2R2c1c1NnRVT3RiUFE1RVZuRGdVaHlUUjhpUUd0dGxhOUFXNnVHc2MyeFBLYjZKcjV1amR5RGJrOHBVZF82U0xrWVBiZURWRGNCbG1aRU12Vlk5YW9ubGlIcEx4X2M3Q21QVzV4NS05SjExU1JJT1hVai1JdmppenpIMW1lQmljUnEza21JNmJ5eHozQWdnRnZJeFpva1QzNzJJdXVLOXRIMEEyamJMenpqbVIxSTV5Z2dYa1BIakJMcUNVRGhRQkRhdDNJWkJrSldsbkNPaTFoTEhaRkpiOWwtcWV1ZFptM3hYSmFZdHRrZndjUTVVdzRuQTFXNjN6elNuSFV2ck1XRENrQ2NkbENtWUJXQlYxd0tQZHByNW9rM1c3YlVrV2NEOWJDTEJzcU5KZURVa2RoMUdHOEl6QjM0ZHJvR0FwWUVuRXRpV0sza0FWRDVEdS1oRjBsZGlYV1lFVURBOUhlSER0NjdGV2dyeC1tSFFxekE0OS1vWWFYdUJqamNOMzFFNGJjV0NiYnFjTWF3WjVnX3ZrdEVodU4wSktScHB4QW9nMkJJVnA0MHY2VzhiZnVrdXhiZUFpcHg4emJBQnFfTDRMYk5tNkhManA5clZiRUMtWERfaHNKbzJZSWRWUE1YVk5XS2xQSmc5V3FGN2wwcG8ybkhnQ1h5aW9ybC1MMzhaU1hVdENkUzBXQUFFeTBPYnVobGJsbW5FQkZUVVVaRUJWcWoycHVPY2xMWVVwSm1BRllqcXRoMFYyd1ZrUDZDVmRpY2JWcWJQUXNmNXNwa0syblREZklmZWpncWpPZFM5dnRDVk15alR1eGxGUkJ5LWFKZFBQR0ZTRkFOaDZIdktjVG1OQU5zTzFQRXUzU3dEeXBuOVJmRTBtc1VSRzlLQk9IeHMzRlN5QlNzM2dWaXBHNENwdmNRdVU3TlRSaXE0clZ3OUI4UQ"/><style>
+        @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 10px;
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .button {
+            background-color: #f44336; /* red */
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            opacity: 0.6
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        p {
+            color: black;
+            font-size: 1.4rem;
+            margin-top: 5px;
+            line-height: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.05rem;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 300;
+            color: black;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            text-align: center;
+        }
+
+            .section-title span {
+                color: crimson;
+            }
+
+        .cta {
+            display: inline-block;
+            padding: 10px 30px;
+            color: white;
+            background-color: transparent;
+            border: 2px solid crimson;
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-top: 30px;
+            transition: 0.3s ease;
+            transition-property: background-color, color;
+        }
+
+            .cta:hover {
+                color: white;
+                background-color: crimson;
+            }
+
+        .brand h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+            color: white;
+        }
+
+            .brand h1 span {
+                color: crimson;
+            }
+
+        /* Header section */
+        #header {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: auto;
+        }
+
+            #header .header {
+                min-height: 8vh;
+                background-color: rgba(31, 30, 30, 0.24);
+                transition: 0.3s ease background-color;
+            }
+
+            #header .nav-bar {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+                height: 100%;
+                max-width: 1300px;
+                padding: 0 10px;
+            }
+
+            #header .nav-list ul {
+                list-style: none;
+                position: absolute;
+                background-color: rgb(31, 30, 30);
+                width: 100vw;
+                height: 100vh;
+                left: 100%;
+                top: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 1;
+                overflow-x: hidden;
+                transition: 0.5s ease left;
+            }
+
+                #header .nav-list ul.active {
+                    left: 0%;
+                }
+
+                #header .nav-list ul a {
+                    font-size: 2.5rem;
+                    font-weight: 500;
+                    letter-spacing: 0.2rem;
+                    text-decoration: none;
+                    color: white;
+                    text-transform: uppercase;
+                    padding: 20px;
+                    display: block;
+                }
+
+                    #header .nav-list ul a::after {
+                        content: attr(data-after);
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%) scale(0);
+                        color: rgba(240, 248, 255, 0.021);
+                        font-size: 13rem;
+                        letter-spacing: 50px;
+                        z-index: -1;
+                        transition: 0.3s ease letter-spacing;
+                    }
+
+                #header .nav-list ul li:hover a::after {
+                    transform: translate(-50%, -50%) scale(1);
+                    letter-spacing: initial;
+                }
+
+                #header .nav-list ul li:hover a {
+                    color: crimson;
+                }
+
+            #header .hamburger {
+                height: 60px;
+                width: 60px;
+                display: inline-block;
+                border: 3px solid white;
+                border-radius: 50%;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 100;
+                cursor: pointer;
+                transform: scale(0.8);
+                margin-right: 20px;
+            }
+
+                #header .hamburger:after {
+                    position: absolute;
+                    content: '';
+                    height: 100%;
+                    width: 100%;
+                    border-radius: 50%;
+                    border: 3px solid white;
+                    animation: hamburger_puls 1s ease infinite;
+                }
+
+                #header .hamburger .bar {
+                    height: 2px;
+                    width: 30px;
+                    position: relative;
+                    background-color: white;
+                    z-index: -1;
+                }
+
+                    #header .hamburger .bar::after,
+                    #header .hamburger .bar::before {
+                        content: '';
+                        position: absolute;
+                        height: 100%;
+                        width: 100%;
+                        left: 0;
+                        background-color: white;
+                        transition: 0.3s ease;
+                        transition-property: top, bottom;
+                    }
+
+                    #header .hamburger .bar::after {
+                        top: 8px;
+                    }
+
+                    #header .hamburger .bar::before {
+                        bottom: 8px;
+                    }
+
+                #header .hamburger.active .bar::before {
+                    bottom: 0;
+                }
+
+                #header .hamburger.active .bar::after {
+                    top: 0;
+                }
+        /* End Header section */
+
+        /* Hero Section */
+        #hero {
+            background-image: url({{url_for('static', filename='hero-bg.png')}});
+            background-size: cover;
+            background-position: top center;
+            position: relative;
+            z-index: 1;
+        }
+
+            #hero::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                background-color: black;
+                opacity: 0.7;
+                z-index: -1;
+            }
+
+            #hero .hero {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 50px;
+                justify-content: flex-start;
+            }
+
+            #hero h1 {
+                display: block;
+                width: fit-content;
+                font-size: 4rem;
+                position: relative;
+                color: transparent;
+                animation: text_reveal 0.5s ease forwards;
+                animation-delay: 1s;
+            }
+
+                #hero h1:nth-child(1) {
+                    animation-delay: 1s;
+                }
+
+                #hero h1:nth-child(2) {
+                    animation-delay: 2s;
+                }
+
+                #hero h1:nth-child(3) {
+                    animation: text_reveal_name 0.5s ease forwards;
+                    animation-delay: 3s;
+                }
+
+                #hero h1 span {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 100%;
+                    width: 0;
+                    background-color: crimson;
+                    animation: text_reveal_box 1s ease;
+                    animation-delay: 0.5s;
+                }
+
+                #hero h1:nth-child(1) span {
+                    animation-delay: 0.5s;
+                }
+
+                #hero h1:nth-child(2) span {
+                    animation-delay: 1.5s;
+                }
+
+                #hero h1:nth-child(3) span {
+                    animation-delay: 2.5s;
+                }
+
+        /* End Hero Section */
+
+        /* Services Section */
+        #services .services {
+            flex-direction: column;
+            text-align: center;
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+
+        #services .service-top {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #services .service-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        #services .service-item {
+            flex-basis: 80%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            padding: 30px;
+            border-radius: 10px;
+            background-image: url(./img/img-1.png);
+            background-size: cover;
+            margin: 10px 5%;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+            #services .service-item::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+                opacity: 0.9;
+                z-index: -1;
+            }
+
+        #services .service-bottom .icon {
+            height: 80px;
+            width: 80px;
+            margin-bottom: 20px;
+        }
+
+        #services .service-item h2 {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        #services .service-item p {
+            color: white;
+            text-align: left;
+        }
+        /* End Services Section */
+
+        /* Projects section */
+        #projects .projects {
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 0;
+        }
+
+        #projects .projects-header h1 {
+            margin-bottom: 50px;
+        }
+
+        #projects .all-projects {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #projects .project-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 80%;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        #projects .project-info {
+            padding: 30px;
+            flex-basis: 50%;
+            height: 100%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+            color: white;
+        }
+
+            #projects .project-info h1 {
+                font-size: 4rem;
+                font-weight: 500;
+            }
+
+            #projects .project-info h2 {
+                font-size: 1.8rem;
+                font-weight: 500;
+                margin-top: 10px;
+            }
+
+            #projects .project-info p {
+                color: white;
+            }
+
+        #projects .project-img {
+            flex-basis: 50%;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            #projects .project-img:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 100%;
+                background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+                opacity: 0.7;
+            }
+
+            #projects .project-img img {
+                transition: 0.3s ease transform;
+            }
+
+        #projects .project-item:hover .project-img img {
+            transform: scale(1.1);
+        }
+        /* End Projects section */
+
+        /* About Section */
+        #about .about {
+            flex-direction: column-reverse;
+            text-align: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px;
+        }
+
+        #about .col-left {
+            width: 250px;
+            height: 360px;
+        }
+
+        #about .col-right {
+            width: 100%;
+        }
+
+            #about .col-right h2 {
+                font-size: 1.8rem;
+                font-weight: 500;
+                letter-spacing: 0.2rem;
+                margin-bottom: 10px;
+            }
+
+            #about .col-right p {
+                margin-bottom: 20px;
+            }
+
+            #about .col-right .cta {
+                color: black;
+                margin-bottom: 50px;
+                padding: 10px 20px;
+                font-size: 2rem;
+            }
+
+        #about .col-left .about-img {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            border: 10px solid white;
+        }
+
+            #about .col-left .about-img::after {
+                content: '';
+                position: absolute;
+                left: -33px;
+                top: 19px;
+                height: 98%;
+                width: 98%;
+                border: 7px solid crimson;
+                z-index: -1;
+            }
+        /* End About Section */
+
+        /* contact Section */
+        #contact .contact {
+            flex-direction: column;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 90%;
+        }
+
+        #contact .contact-items {
+            /* max-width: 400px; */
+            width: 100%;
+        }
+
+        #contact .contact-item {
+            width: 80%;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            padding: 30px;
+            margin: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0px 0px 18px 0 #0000002c;
+            transition: 0.3s ease box-shadow;
+        }
+
+            #contact .contact-item:hover {
+                box-shadow: 0px 0px 5px 0 #0000002c;
+            }
+
+        #contact .icon {
+            width: 70px;
+            margin: 0 auto;
+            margin-bottom: 10px;
+        }
+
+        #contact .contact-info h1 {
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        #contact .contact-info h2 {
+            font-size: 1.3rem;
+            line-height: 2rem;
+            font-weight: 500;
+        }
+        /*End contact Section */
+
+        /* Footer */
+        #footer {
+            background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+        }
+
+            #footer .footer {
+                min-height: 200px;
+                flex-direction: column;
+                padding-top: 50px;
+                padding-bottom: 10px;
+            }
+
+            #footer h2 {
+                color: white;
+                font-weight: 500;
+                font-size: 1.8rem;
+                letter-spacing: 0.1rem;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            #footer .social-icon {
+                display: flex;
+                margin-bottom: 30px;
+            }
+
+            #footer .social-item {
+                height: 50px;
+                width: 50px;
+                margin: 0 5px;
+            }
+
+                #footer .social-item img {
+                    filter: grayscale(1);
+                    transition: 0.3s ease filter;
+                }
+
+                #footer .social-item:hover img {
+                    filter: grayscale(0);
+                }
+
+            #footer p {
+                color: white;
+                font-size: 1.3rem;
+            }
+        /* End Footer */
+
+        /* Keyframes */
+        @keyframes hamburger_puls {
+            0% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: scale(1.4);
+            }
+        }
+
+        @keyframes text_reveal_box {
+            50% {
+                width: 100%;
+                left: 0;
+            }
+
+            100% {
+                width: 0;
+                left: 100%;
+            }
+        }
+
+        @keyframes text_reveal {
+            100% {
+                color: white;
+            }
+        }
+
+        @keyframes text_reveal_name {
+            100% {
+                color: crimson;
+                font-weight: 500;
+            }
+        }
+        /* End Keyframes */
+
+        /* Media Query For Tablet */
+        @media only screen and (min-width: 768px) {
+            .cta {
+                font-size: 2.5rem;
+                padding: 20px 60px;
+            }
+
+            h1.section-title {
+                font-size: 6rem;
+            }
+
+            /* Hero */
+            #hero h1 {
+                font-size: 7rem;
+            }
+            /* End Hero */
+
+            /* Services Section */
+            #services .service-bottom .service-item {
+                flex-basis: 45%;
+                margin: 2.5%;
+            }
+            /* End Services Section */
+
+            /* Project */
+            #projects .project-item {
+                flex-direction: row;
+            }
+
+                #projects .project-item:nth-child(even) {
+                    flex-direction: row-reverse;
+                }
+
+            #projects .project-item {
+                height: 400px;
+                margin: 0;
+                width: 100%;
+                border-radius: 0;
+            }
+
+            #projects .all-projects .project-info {
+                height: 100%;
+            }
+
+            #projects .all-projects .project-img {
+                height: 100%;
+            }
+            /* End Project */
+
+            /* About */
+            #about .about {
+                flex-direction: row;
+            }
+
+            #about .col-left {
+                width: 600px;
+                height: 400px;
+                padding-left: 60px;
+            }
+
+            #about .about .col-left .about-img::after {
+                left: -45px;
+                top: 34px;
+                height: 98%;
+                width: 98%;
+                border: 10px solid crimson;
+            }
+
+            #about .col-right {
+                text-align: left;
+                padding: 30px;
+            }
+
+                #about .col-right h1 {
+                    text-align: left;
+                }
+            /* End About */
+
+            /* contact  */
+            #contact .contact {
+                flex-direction: column;
+                padding: 100px 0;
+                align-items: center;
+                justify-content: center;
+                min-width: 20vh;
+            }
+
+            #contact .contact-items {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                margin: 0;
+            }
+
+            #contact .contact-item {
+                width: 30%;
+                margin: 0;
+                flex-direction: row;
+            }
+
+                #contact .contact-item .icon {
+                    height: 100px;
+                    width: 100px;
+                }
+
+                    #contact .contact-item .icon img {
+                        object-fit: contain;
+                    }
+
+                #contact .contact-item .contact-info {
+                    width: 100%;
+                    text-align: left;
+                    padding-left: 20px;
+                }
+            /* End contact  */
+        }
+        /* End Media Query For Tablet */
+
+        /* Media Query For Desktop */
+        @media only screen and (min-width: 1200px) {
+            /* header */
+            #header .hamburger {
+                display: none;
+            }
+
+            #header .nav-list ul {
+                position: initial;
+                display: block;
+                height: auto;
+                width: fit-content;
+                background-color: transparent;
+            }
+
+                #header .nav-list ul li {
+                    display: inline-block;
+                }
+
+                    #header .nav-list ul li a {
+                        font-size: 1.8rem;
+                    }
+
+                #header .nav-list ul a:after {
+                    display: none;
+                }
+            /* End header */
+
+            #services .service-bottom .service-item {
+                flex-basis: 22%;
+                margin: 1.5%;
+            }
+        }
+        /* End  Media Query For Desktop */
+
+        /*option*/
+        .custom-select {
+
+  position: relative;
+  font-size: 10px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.custom-select select {
+  display: none; /*hide original SELECT element: */
+  
+}
+
+.select-selected {
+  background-color: rgb(255, 30, 30);
+  
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div,.select-selected {
+    
+  color: #ffffff;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+    width: 200px;
+  height: 100px;
+  overflow-y: scroll;
+  scrollbar-color: rebeccapurple green;
+  scrollbar-width: thin;
+  position: absolute;
+  background-color: rgb(255, 30, 30);
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <section id="header">
+        <div class="header container">
+            <div class="nav-bar">
+                <div class="brand">
+                    <a href="#hero">
+                        <h1><span>S</span>ign <span>L</span>anguage <span>R</span>ecognition</h1>
+                    </a>
+                </div>
+                <div class="nav-list">
+                    <div class="hamburger">
+                        <div class="bar"></div>
+                    </div>
+                    <ul>
+                        <li><a href="#hero" data-after="Home">Home</a></li>
+                        <li><a href="#projects" data-after="Projects">This project</a></li>
+                        <li><a href="#about" data-after="About">About us</a></li>
+                        <li><a href="#contact" data-after="Contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Header -->
+    <!-- Hero Section  -->
+    <section id="hero">
+        <div class="hero container">
+            <div>
+                <h1>Hello, <span></span></h1>
+                <h1>Welcome to <span></span></h1>
+                <h1>Sign language recognition<span></span></h1>
+                <br />
+                <h2>Choose your preferred language:</h2>
+    <form action="{{ url_for('predict')}}" method="POST">
+        <div class ="custom-select" style="width:200px;">
+            <select name="languages" id="languages">
+                <option title ="Select a Language">Select a Language</option>
+                <option value="af">Afrikaans</option>
+                <option value="ar">Arabic</option>
+                <option value="bg">Bulgarian</option>
+                <option value="bn">Bengali</option>
+                <option value="bs">Bosnian</option>
+                <option value="ca">Catalan</option>
+                <option value="cs">Czech</option>
+                <option value="da">Danish</option>
+                <option value="de">German</option>
+                <option value="el">Greek</option>
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="et">Estonian</option>
+                <option value="fi">Finnish</option>
+                <option value="fr">French</option>
+                <option value="gu">Gujarati</option>
+                <option value="hi">Hindi</option>
+                <option value="hr">Croatian</option>
+                <option value="hu">Hungarian</option>
+                <option value="id">Indonesian</option>
+                <option value="is">Icelandic</option>
+                <option value="it">Italian</option>
+                <option value="iw">Hebrew</option>
+                <option value="ja">Japanese</option>
+                <option value="jw">Javanese</option>
+                <option value="km">Khmer</option>
+                <option value="kn">Kannada</option>
+                <option value="ko">Korean</option>
+                <option value="la">Latin</option>
+                <option value="lv">Latvian</option>
+                <option value="ml">Malyalam</option>
+                <option value="mr">Marathi</option>
+                <option value="ms">Malay</option>
+                <option value="my">Myanmar (Burmese)</option>
+                <option value="ne">Nepali</option>
+                <option value="nl">Dutch</option>
+                <option value="no">Norwegian</option>
+                <option value="pl">Polish</option>
+                <option value="pt">Portugese</option>
+                <option value="ro">Romanian</option>
+                <option value="ru">Russian</option>
+                <option value="si">Sinhala</option>
+                <option value="sk">Slovak</option>
+                <option value="sq">Albanian</option>
+                <option value="sr">Serbian</option>
+                <option value="su">Sundanese</option>
+                <option value="sv">Swedish</option>
+                <option value="sw">Swahili</option>
+                <option value="ta">Tamil</option>
+                <option value="te">Telugu</option>
+                <option value="th">Thai</option>
+                <option value="tl">Filipino</option>
+                <option value="tr">Turkish</option>
+                <option value="uk">Ukrainian</option>
+                <option value="ur">Urdu</option>
+                <option value="vi">Vietnamese</option>
+                <option value="bn">Bengali</option>
+                <option value="zh-CN">Chinese (Simplified)</option>
+                <option value="zh-TW">Chinese (Traditional/Mandarin/Taiwan)</option>
+            </select>
+        </div>
+                <button type="submit" class="cta">Start Recognizing Signs</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- End Hero Section  -->
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="projects container">
+            <div class="projects-header">
+                <h1 class="section-title">About This <span>Project</span></h1>
+            </div>
+            <div class="all-projects">
+                <div class="project-item">
+                    <div class="project-info">
+                        <h1>What does it do?</h1>
+                        <h2>Recognize signs</h2>
+                        <p>
+                            This project can help identify ASL (American Sign Language) signs.
+                        </p>
+                    </div>
+                    <div class="project-img">
+                        <img src="./static/img-1.png" alt="img">
+                    </div>
+                </div>
+                <div class="project-item">
+                    <div class="project-info">
+                        <h1>Why did we create it?</h1>
+                        <h2>Communication</h2>
+                        <p>
+                            Not everyone can understand ASL. This project will make it a little easier for people to interact with each other.
+                        </p>
+                    </div>
+                    <div class="project-img">
+                        <img src="./static/img-1.png" alt="img">
+                    </div>
+                </div>
+                <!--  <div class="project-item">
+            <div class="project-info">
+                <h1>Project 3</h1>
+                <h2>Coding is Love</h2>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+                    rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+                    harum? Ipsum repellat animi, fugit architecto voluptatum odit et!
+                </p>
+            </div>
+            <div class="project-img">
+                <img src="./static/img-1.png" alt="img">
+            </div>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h1>Project 4</h1>
+                <h2>Coding is Love</h2>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+                    rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+                    harum? Ipsum repellat animi, fugit architecto voluptatum odit et!
+                </p>
+            </div>
+            <div class="project-img">
+                <img src="./static/img-1.png" alt="img">
+            </div>
+        </div>
+        <div class="project-item">
+            <div class="project-info">
+                <h1>Project 5</h1>
+                <h2>Coding is Love</h2>
+                <p>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad, iusto cupiditate voluptatum impedit unde
+                    rem ipsa distinctio illum quae mollitia ut, accusantium eius odio ducimus illo neque atque libero non sunt
+                    harum? Ipsum repellat animi, fugit architecto voluptatum odit et!
+                </p>
+            </div>
+            <div class="project-img">
+                <img src="./static/img-1.png" alt="img">
+            </div>
+        </div>
+    </div>
+           -->
+            </div>
+    </section>
+    <!-- End Projects Section -->
+    <!-- About Section -->
+    <section id="about">
+        <div class="about container">
+            <div class="col-left">
+                <div class="about-img">
+                    <img src="./static/img-2.png" alt="img">
+                </div>
+            </div>
+            <div class="col-right">
+                <h1 class="section-title">About <span>me</span></h1>
+                <h2>Front End Developer</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, velit alias eius non illum beatae atque
+                    repellat ratione qui veritatis repudiandae adipisci maiores. At inventore necessitatibus deserunt
+                    exercitationem cumque earum omnis ipsum rem accusantium quis, quas quia, accusamus provident suscipit magni!
+                    Expedita sint ad dolore, commodi labore nihil velit earum ducimus nulla quae nostrum fugit aut, deserunt
+                    reprehenderit libero enim!
+                </p>
+                <a href="#" class="cta">Download Resume</a>
+            </div>
+        </div>
+    </section>
+    <!-- End About Section -->
+    <!-- About Section -->
+    <section id="about">
+        <div class="about container">
+            <div class="col-left">
+                <div class="about-img">
+                    <img src="./static/img-2.png" alt="img">
+                </div>
+            </div>
+            <div class="col-right">
+                <h1 class="section-title">About <span>me</span></h1>
+                <h2>Front End Developer</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, velit alias eius non illum beatae atque
+                    repellat ratione qui veritatis repudiandae adipisci maiores. At inventore necessitatibus deserunt
+                    exercitationem cumque earum omnis ipsum rem accusantium quis, quas quia, accusamus provident suscipit magni!
+                    Expedita sint ad dolore, commodi labore nihil velit earum ducimus nulla quae nostrum fugit aut, deserunt
+                    reprehenderit libero enim!
+                </p>
+                <a href="#" class="cta">Download Resume</a>
+            </div>
+        </div>
+    </section>
+    <!-- End About Section -->
+    <!-- About Section -->
+    <section id="about">
+        <div class="about container">
+            <div class="col-left">
+                <div class="about-img">
+                    <img src="./static/img-2.png" alt="img">
+                </div>
+            </div>
+            <div class="col-right">
+                <h1 class="section-title">About <span>me</span></h1>
+                <h2>Front End Developer</h2>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, velit alias eius non illum beatae atque
+                    repellat ratione qui veritatis repudiandae adipisci maiores. At inventore necessitatibus deserunt
+                    exercitationem cumque earum omnis ipsum rem accusantium quis, quas quia, accusamus provident suscipit magni!
+                    Expedita sint ad dolore, commodi labore nihil velit earum ducimus nulla quae nostrum fugit aut, deserunt
+                    reprehenderit libero enim!
+                </p>
+                <a href="#" class="cta">Download Resume</a>
+            </div>
+        </div>
+    </section>
+    <!-- End About Section -->
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact container">
+            <div>
+                <h1 class="section-title">Contact <span>info</span></h1>
+            </div>
+            <div class="contact-items">
+                <div class="contact-item">
+                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+                    <div class="contact-info">
+                        <h1>Phone</h1>
+                        <h2>+1 234 123 1234</h2>
+                        <h2>+1 234 123 1234</h2>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+                    <div class="contact-info">
+                        <h1>Email</h1>
+                        <h2>info@gmail.com</h2>
+                        <h2>abcd@gmail.com</h2>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+                    <div class="contact-info">
+                        <h1>Address</h1>
+                        <h2>Fatikchhari, Chittagong, Bangladesh</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Section -->
+    <!-- Footer -->
+    <section id="footer">
+        <div class="footer container">
+            <div class="brand">
+                <h1><span>S</span>ign <span>L</span>anguage <span>R</span>ecognition</h1>
+            </div>
+            <!-- <h2>Your Complete Web Solution</h2>
+    <div class="social-icon">
+        <div class="social-item">
+            <a href="#"><img src="https://img.icons8.com/bubbles/100/000000/facebook-new.png" /></a>
+        </div>
+        <div class="social-item">
+            <a href="#"><img src="https://img.icons8.com/bubbles/100/000000/instagram-new.png" /></a>
+        </div>
+        <div class="social-item">
+            <a href="#"><img src="https://img.icons8.com/bubbles/100/000000/twitter.png" /></a>
+        </div>
+        <div class="social-item">
+            <a href="#"><img src="https://img.icons8.com/bubbles/100/000000/behance.png" /></a>
+        </div>
+    </div> -->
+            <p>Created by: Ishika Gupta, Kritika Agarwal, Ganji Nishanth</p>
+        </div>
+    </section>
+    <!-- End Footer -->
+    <script src="/app.js"></script>
+    <script>
+        var x, i, j, l, ll, selElmnt, a, b, c;
+/* Look for any elements with the class "custom-select": */
+x = document.getElementsByClassName("custom-select");
+l = x.length;
+for (i = 0; i < l; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  ll = selElmnt.length;
+  /* For each element, create a new DIV that will act as the selected item: */
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /* For each element, create a new DIV that will contain the option list: */
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < ll; j++) {
+    /* For each option in the original select element,
+    create a new DIV that will act as an option item: */
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /* When an item is clicked, update the original select box,
+        and the selected item: */
+        var y, i, k, s, h, sl, yl;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        sl = s.length;
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < sl; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            yl = y.length;
+            for (k = 0; k < yl; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+    /* When the select box is clicked, close any other select boxes,
+    and open/close the current select box: */
+    e.stopPropagation();
+    closeAllSelect(this);
+    this.nextSibling.classList.toggle("select-hide");
+    this.classList.toggle("select-arrow-active");
+  });
+}
+
+function closeAllSelect(elmnt) {
+  /* A function that will close all select boxes in the document,
+  except the current select box: */
+  var x, y, i, xl, yl, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  xl = x.length;
+  yl = y.length;
+  for (i = 0; i < yl; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < xl; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+
+/* If the user clicks anywhere outside the select box,
+then close all select boxes: */
+document.addEventListener("click", closeAllSelect);
+    </script>
+
+</body>
+</html>
